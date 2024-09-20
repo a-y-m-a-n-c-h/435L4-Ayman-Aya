@@ -1,1 +1,3 @@
-PyQt5/.venv/
+.venv/
+__pycache__/
+university.db
