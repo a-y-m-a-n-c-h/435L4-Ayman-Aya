@@ -5,3 +5,4 @@ Lab3
    :maxdepth: 4
 
    ../../app_PyQt5
+   ../../main

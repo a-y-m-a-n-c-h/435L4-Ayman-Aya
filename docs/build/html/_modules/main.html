@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>main &mdash; School Management System 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=ce80abac"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            School Management System
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Lab3</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">School Management System</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">main</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for main</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">ttk</span>
+
+
+<div class="viewcode-block" id="SchoolManagementSystem"><a class="viewcode-back" href="../main.html#main.SchoolManagementSystem">[docs]</a><span class="k">class</span> <span class="nc">SchoolManagementSystem</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class used to represent the School Management System.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    save_data(filename, data)</span>
+<span class="sd">        Saves the given data to the specified JSON file.</span>
+
+<span class="sd">    save_data_dump(filename, data)</span>
+<span class="sd">        Dumps the given data directly into the specified JSON file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SchoolManagementSystem.save_data"><a class="viewcode-back" href="../main.html#main.SchoolManagementSystem.save_data">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">save_data</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the given data to a JSON file.</span>
+
+<span class="sd">        If the file exists, it loads the existing data and appends new data. Otherwise, it creates a new file.</span>
+
+<span class="sd">        :param filename: The name of the file to save the data to.</span>
+<span class="sd">        :type filename: str</span>
+<span class="sd">        :param data: The data to be saved.</span>
+<span class="sd">        :type data: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">existing_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">):</span>
+            <span class="n">existing_data</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">json_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+        <span class="n">existing_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">json_data</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">existing_data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SchoolManagementSystem.save_data_dump"><a class="viewcode-back" href="../main.html#main.SchoolManagementSystem.save_data_dump">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">save_data_dump</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dump the given data into a JSON file, overwriting the existing file.</span>
+
+<span class="sd">        :param filename: The name of the file to dump the data into.</span>
+<span class="sd">        :type filename: str</span>
+<span class="sd">        :param data: The data to be saved.</span>
+<span class="sd">        :type data: dict or list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Person"><a class="viewcode-back" href="../main.html#main.Person">[docs]</a><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to represent a Person.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        The name of the person.</span>
+<span class="sd">    age : int</span>
+<span class="sd">        The age of the person.</span>
+<span class="sd">    email : str</span>
+<span class="sd">        The email of the person.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    validate_email(email)</span>
+<span class="sd">        Validates the email format using a regex pattern.</span>
+
+<span class="sd">    introduce()</span>
+<span class="sd">        Prints an introduction of the person.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the necessary attributes for the Person object.</span>
+
+<span class="sd">        :param name: The name of the person.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The age of the person. Must be positive.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The email address of the person.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;age is negative!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="n">Person</span><span class="o">.</span><span class="n">validate_email</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>  <span class="c1"># Validate email format</span>
+
+<div class="viewcode-block" id="Person.validate_email"><a class="viewcode-back" href="../main.html#main.Person.validate_email">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validate the format of the email using a regex pattern.</span>
+
+<span class="sd">        :param email: The email to be validated.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :return: The validated email.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        :raises ValueError: If the email format is invalid.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">email_regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)&quot;</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">email_regex</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">email</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid email format&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Person.introduce"><a class="viewcode-back" href="../main.html#main.Person.introduce">[docs]</a>    <span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prints an introduction that includes the person&#39;s name and age.</span>
+
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, my name is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> and I am </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Course"><a class="viewcode-back" href="../main.html#main.Course">[docs]</a><span class="k">class</span> <span class="nc">Course</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to represent a Course.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    course_id : str</span>
+<span class="sd">        The ID of the course.</span>
+<span class="sd">    course_name : str</span>
+<span class="sd">        The name of the course.</span>
+<span class="sd">    instructor : Instructor, optional</span>
+<span class="sd">        The instructor assigned to the course. Default is None.</span>
+<span class="sd">    enrolled_students : list</span>
+<span class="sd">        A list of enrolled students.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    add_student(student)</span>
+<span class="sd">        Adds a student to the course&#39;s enrolled students list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">instructor</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the necessary attributes for the Course object.</span>
+
+<span class="sd">        :param course_id: The ID of the course.</span>
+<span class="sd">        :type course_id: str</span>
+<span class="sd">        :param course_name: The name of the course.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        :param instructor: The instructor assigned to the course.</span>
+<span class="sd">        :type instructor: Instructor or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span> <span class="o">=</span> <span class="n">course_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="n">instructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># List to hold enrolled Student objects</span>
+
+<div class="viewcode-block" id="Course.add_student"><a class="viewcode-back" href="../main.html#main.Course.add_student">[docs]</a>    <span class="k">def</span> <span class="nf">add_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Adds a student to the course&#39;s enrolled students list.</span>
+
+<span class="sd">        :param student: The student to be added.</span>
+<span class="sd">        :type student: Student</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">student</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="RegCourse"><a class="viewcode-back" href="../main.html#main.RegCourse">[docs]</a><span class="k">class</span> <span class="nc">RegCourse</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to represent a registered course for a student.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    student_id : str</span>
+<span class="sd">        The ID of the student.</span>
+<span class="sd">    course_name : str</span>
+<span class="sd">        The name of the registered course.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the necessary attributes for the RegCourse object.</span>
+
+<span class="sd">        :param student_id: The ID of the student.</span>
+<span class="sd">        :type student_id: str</span>
+<span class="sd">        :param course_name: The name of the registered course.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span></div>
+
+
+<div class="viewcode-block" id="AssCourse"><a class="viewcode-back" href="../main.html#main.AssCourse">[docs]</a><span class="k">class</span> <span class="nc">AssCourse</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to represent an assigned course for an instructor.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    instructor_id : str</span>
+<span class="sd">        The ID of the instructor.</span>
+<span class="sd">    course_name : str</span>
+<span class="sd">        The name of the assigned course.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the necessary attributes for the AssCourse object.</span>
+
+<span class="sd">        :param instructor_id: The ID of the instructor.</span>
+<span class="sd">        :type instructor_id: str</span>
+<span class="sd">        :param course_name: The name of the assigned course.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span></div>
+
+
+<div class="viewcode-block" id="Student"><a class="viewcode-back" href="../main.html#main.Student">[docs]</a><span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to represent a Student, inherits from Person.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    student_id : str</span>
+<span class="sd">        The ID of the student.</span>
+<span class="sd">    registered_courses : list</span>
+<span class="sd">        A list of registered courses.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    register_course(course)</span>
+<span class="sd">        Adds a course to the student&#39;s registered courses list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the necessary attributes for the Student object.</span>
+
+<span class="sd">        :param name: The name of the student.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The age of the student.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The email of the student.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :param student_id: The ID of the student.</span>
+<span class="sd">        :type student_id: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># List to hold registered Course objects</span>
+
+<div class="viewcode-block" id="Student.register_course"><a class="viewcode-back" href="../main.html#main.Student.register_course">[docs]</a>    <span class="k">def</span> <span class="nf">register_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Registers a course for the student.</span>
+
+<span class="sd">        :param course: The course to be registered.</span>
+<span class="sd">        :type course: Course</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="Instructor"><a class="viewcode-back" href="../main.html#main.Instructor">[docs]</a><span class="k">class</span> <span class="nc">Instructor</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to represent an Instructor, inherits from Person.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    instructor_id : str</span>
+<span class="sd">        The ID of the instructor.</span>
+<span class="sd">    assigned_courses : list</span>
+<span class="sd">        A list of assigned courses.</span>
+
+<span class="sd">    Methods</span>
+<span class="sd">    -------</span>
+<span class="sd">    assign_course(course)</span>
+<span class="sd">        Adds a course to the instructor&#39;s assigned courses list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs the necessary attributes for the Instructor object.</span>
+
+<span class="sd">        :param name: The name of the instructor.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The age of the instructor.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The email of the instructor.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :param instructor_id: The ID of the instructor.</span>
+<span class="sd">        :type instructor_id: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># List to hold assigned Course objects</span>
+
+<div class="viewcode-block" id="Instructor.assign_course"><a class="viewcode-back" href="../main.html#main.Instructor.assign_course">[docs]</a>    <span class="k">def</span> <span class="nf">assign_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assigns a course to the instructor.</span>
+
+<span class="sd">        :param course: The course to be assigned.</span>
+<span class="sd">        :type course: Course</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span></div></div>
+
+
+
+<span class="c1"># Create the main window</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;School Management System&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;400x400&quot;</span><span class="p">)</span>
+
+
+<span class="n">main_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">main_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">main_frame</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">scrollbar</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">main_frame</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>
+<span class="n">scrollbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span>
+
+
+<span class="n">canvas</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">yscrollcommand</span><span class="o">=</span><span class="n">scrollbar</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Configure&gt;&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">canvas</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">scrollregion</span><span class="o">=</span><span class="n">canvas</span><span class="o">.</span><span class="n">bbox</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)))</span>
+
+
+<span class="n">second_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
+
+<span class="n">canvas</span><span class="o">.</span><span class="n">create_window</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">window</span><span class="o">=</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">)</span>
+
+<span class="n">title_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Student, Instructor, or Course&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">title_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="add_student"><a class="viewcode-back" href="../main.html#main.add_student">[docs]</a><span class="k">def</span> <span class="nf">add_student</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves the student information from the entry fields,</span>
+<span class="sd">    creates a `Student` object, and saves it to a JSON file.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">student_name_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">student_age_entry</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">student_email_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="n">stdnt</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">)</span>
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;students.json&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">stdnt</span><span class="p">])</span></div>
+
+
+<span class="c1"># Labels and Entry fields for Student Form</span>
+<span class="n">student_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Student&quot;</span><span class="p">)</span>
+<span class="n">student_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">student_name_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+<span class="n">student_name_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">student_name_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">student_name_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">student_age_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span>
+<span class="n">student_age_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">student_age_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">student_age_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">student_email_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+<span class="n">student_email_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">student_email_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">student_email_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">student_id_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student ID&quot;</span><span class="p">)</span>
+<span class="n">student_id_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">student_id_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">student_id_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">add_student_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Student&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">add_student</span><span class="p">)</span>
+<span class="n">add_student_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<div class="viewcode-block" id="load_json"><a class="viewcode-back" href="../main.html#main.load_json">[docs]</a><span class="k">def</span> <span class="nf">load_json</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads and returns data from the given JSON file.</span>
+
+<span class="sd">    :param filename: The name of the file to load data from.</span>
+<span class="sd">    :type filename: str</span>
+<span class="sd">    :return: The loaded data.</span>
+<span class="sd">    :rtype: dict or list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="add_instructor"><a class="viewcode-back" href="../main.html#main.add_instructor">[docs]</a><span class="k">def</span> <span class="nf">add_instructor</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves the instructor information from the entry fields,</span>
+<span class="sd">    creates an `Instructor` object, and saves it to a JSON file.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">instructor_name_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">instructor_age_entry</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">instructor_email_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="n">inst</span> <span class="o">=</span> <span class="n">Instructor</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">)</span>
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;instructors.json&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">inst</span><span class="p">])</span></div>
+
+
+<span class="n">instructor_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Instructor&quot;</span><span class="p">)</span>
+<span class="n">instructor_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">instructor_name_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+<span class="n">instructor_name_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">instructor_name_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">instructor_name_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">instructor_age_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Age&quot;</span><span class="p">)</span>
+<span class="n">instructor_age_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">instructor_age_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">instructor_age_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">instructor_email_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Email&quot;</span><span class="p">)</span>
+<span class="n">instructor_email_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">instructor_email_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">instructor_email_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">instructor_id_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor ID&quot;</span><span class="p">)</span>
+<span class="n">instructor_id_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">instructor_id_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">instructor_id_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">add_instructor_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Instructor&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">add_instructor</span><span class="p">)</span>
+<span class="n">add_instructor_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+<div class="viewcode-block" id="add_course"><a class="viewcode-back" href="../main.html#main.add_course">[docs]</a><span class="k">def</span> <span class="nf">add_course</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Retrieves the course information from the entry fields,</span>
+<span class="sd">    creates a `Course` object, and saves it to a JSON file.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">course_id</span> <span class="o">=</span> <span class="n">course_id_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name_entry</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="n">crs</span> <span class="o">=</span> <span class="n">Course</span><span class="p">(</span><span class="n">course_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">)</span>
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;Courses.json&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">crs</span><span class="p">])</span>
+    <span class="n">refreshCourses</span><span class="p">()</span></div>
+
+
+<span class="n">course_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Course&quot;</span><span class="p">)</span>
+<span class="n">course_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">course_id_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course ID&quot;</span><span class="p">)</span>
+<span class="n">course_id_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">course_id_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">course_id_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">course_name_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course Name&quot;</span><span class="p">)</span>
+<span class="n">course_name_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">course_name_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">course_name_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+
+<span class="n">add_course_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Add Course&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">add_course</span><span class="p">)</span>
+<span class="n">add_course_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+
+
+<span class="n">available_courses</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;None&quot;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="update_option_menu"><a class="viewcode-back" href="../main.html#main.update_option_menu">[docs]</a><span class="k">def</span> <span class="nf">update_option_menu</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Updates the available course selection in the dropdown menus.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">course_dropdown</span>
+    <span class="k">global</span> <span class="n">course_dropdown1</span>
+    <span class="n">menu</span> <span class="o">=</span> <span class="n">course_dropdown</span><span class="p">[</span><span class="s2">&quot;menu&quot;</span><span class="p">]</span>
+    <span class="n">menu1</span> <span class="o">=</span> <span class="n">course_dropdown1</span><span class="p">[</span><span class="s2">&quot;menu&quot;</span><span class="p">]</span>
+
+    <span class="n">menu1</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="n">available_courses</span><span class="p">:</span>
+        <span class="n">menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">course</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">_setit</span><span class="p">(</span><span class="n">selected_course_var</span><span class="p">,</span> <span class="n">course</span><span class="p">))</span>
+        <span class="n">menu1</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">course</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">_setit</span><span class="p">(</span><span class="n">selected_course_var1</span><span class="p">,</span> <span class="n">course</span><span class="p">))</span></div>
+
+
+
+
+<div class="viewcode-block" id="refreshCourses"><a class="viewcode-back" href="../main.html#main.refreshCourses">[docs]</a><span class="k">def</span> <span class="nf">refreshCourses</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads the courses from a JSON file, updates the available courses list, and refreshes the dropdown menu.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;Courses.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">courses</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+        <span class="k">global</span> <span class="n">available_courses</span>
+        <span class="n">available_courses</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">courses</span><span class="p">:</span>
+            <span class="n">available_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;course_name&quot;</span><span class="p">])</span>
+
+    <span class="n">update_option_menu</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="addCourseToStudent"><a class="viewcode-back" href="../main.html#main.addCourseToStudent">[docs]</a><span class="k">def</span> <span class="nf">addCourseToStudent</span><span class="p">(</span><span class="n">regcc</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds a registered course to a student&#39;s registered courses list.</span>
+
+<span class="sd">    :param regcc: The registered course object.</span>
+<span class="sd">    :type regcc: RegCourse</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">students</span> <span class="o">=</span> <span class="n">load_json</span><span class="p">(</span><span class="s2">&quot;students.json&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;student_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">regcc</span><span class="o">.</span><span class="n">student_id</span><span class="p">:</span>
+            <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;registered_courses&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">regcc</span><span class="o">.</span><span class="n">course_name</span><span class="p">)</span>
+
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data_dump</span><span class="p">(</span><span class="s2">&quot;students.json&quot;</span><span class="p">,</span> <span class="n">students</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="addCourseToInstructor"><a class="viewcode-back" href="../main.html#main.addCourseToInstructor">[docs]</a><span class="k">def</span> <span class="nf">addCourseToInstructor</span><span class="p">(</span><span class="n">ass_course</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Adds an assigned course to an instructor&#39;s assigned courses list.</span>
+
+<span class="sd">    :param ass_course: The assigned course object.</span>
+<span class="sd">    :type ass_course: AssCourse</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">instructors</span> <span class="o">=</span> <span class="n">load_json</span><span class="p">(</span><span class="s2">&quot;instructors.json&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">instructors</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;instructor_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ass_course</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">:</span>
+            <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;assigned_courses&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ass_course</span><span class="o">.</span><span class="n">course_name</span><span class="p">)</span>
+
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data_dump</span><span class="p">(</span><span class="s2">&quot;instructors.json&quot;</span><span class="p">,</span> <span class="n">instructors</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="register_course"><a class="viewcode-back" href="../main.html#main.register_course">[docs]</a><span class="k">def</span> <span class="nf">register_course</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Registers a course for a student and updates the student&#39;s data in the JSON file.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id_entry1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">selected_course</span> <span class="o">=</span> <span class="n">selected_course_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="n">regcc</span> <span class="o">=</span> <span class="n">RegCourse</span><span class="p">(</span><span class="n">student_id</span><span class="p">,</span> <span class="n">selected_course</span><span class="p">)</span>
+    <span class="n">addCourseToStudent</span><span class="p">(</span><span class="n">regcc</span><span class="p">)</span>
+
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;RegCourses.json&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">regcc</span><span class="p">])</span></div>
+
+
+<span class="n">title_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Course Registration&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">title_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">student_id_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Student ID&quot;</span><span class="p">)</span>
+<span class="n">student_id_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">student_id_entry1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">student_id_entry1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">selected_course_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">selected_course_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">available_courses</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Set default value</span>
+
+<span class="n">course_dropdown_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Select Course&quot;</span><span class="p">)</span>
+<span class="n">course_dropdown_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">course_dropdown</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">selected_course_var</span><span class="p">,</span> <span class="o">*</span><span class="n">available_courses</span><span class="p">)</span>
+<span class="n">course_dropdown</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">register_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Register&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">register_course</span><span class="p">)</span>
+<span class="n">register_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="assign_course"><a class="viewcode-back" href="../main.html#main.assign_course">[docs]</a><span class="k">def</span> <span class="nf">assign_course</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Assigns a course to an instructor and updates the instructor&#39;s data in the JSON file.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id_entry1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">selected_course</span> <span class="o">=</span> <span class="n">selected_course_var1</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+
+    <span class="n">ass_course</span> <span class="o">=</span> <span class="n">AssCourse</span><span class="p">(</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">selected_course</span><span class="p">)</span>
+    <span class="n">addCourseToInstructor</span><span class="p">(</span><span class="n">ass_course</span><span class="p">)</span>
+
+    <span class="n">SchoolManagementSystem</span><span class="o">.</span><span class="n">save_data</span><span class="p">(</span><span class="s2">&quot;AssignedCourses.json&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">ass_course</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="display_data"><a class="viewcode-back" href="../main.html#main.display_data">[docs]</a><span class="k">def</span> <span class="nf">display_data</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Displays data about students and instructors in the tree view widget.</span>
+
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">treeview</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+        <span class="n">treeview</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="n">students</span> <span class="o">=</span> <span class="n">load_json</span><span class="p">(</span><span class="s2">&quot;students.json&quot;</span><span class="p">)</span>
+    <span class="n">instructors</span> <span class="o">=</span> <span class="n">load_json</span><span class="p">(</span><span class="s2">&quot;instructors.json&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="n">treeview</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;Student&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;registered_courses&quot;</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">instructors</span><span class="p">:</span>
+        <span class="n">treeview</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="s2">&quot;Instructor&quot;</span><span class="p">,</span> <span class="n">obj</span><span class="p">[</span><span class="s2">&quot;assigned_courses&quot;</span><span class="p">]))</span></div>
+
+
+
+<span class="n">title_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Assign Instructor to Course&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Arial&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">title_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">instructor_id_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Instructor ID&quot;</span><span class="p">)</span>
+<span class="n">instructor_id_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">instructor_id_entry1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">instructor_id_entry1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">selected_course_var1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">second_frame</span><span class="p">)</span>
+<span class="n">selected_course_var1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">available_courses</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># Set default value</span>
+
+<span class="n">course_dropdown_label1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Select da Course&quot;</span><span class="p">)</span>
+<span class="n">course_dropdown_label1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">course_dropdown1</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">OptionMenu</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">selected_course_var1</span><span class="p">,</span> <span class="o">*</span><span class="n">available_courses</span><span class="p">)</span>
+<span class="n">course_dropdown1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">assign_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Assign Course&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">assign_course</span><span class="p">)</span>
+<span class="n">assign_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">treeview</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="s2">&quot;Info&quot;</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="s2">&quot;headings&quot;</span><span class="p">)</span>
+<span class="n">treeview</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+<span class="n">treeview</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">&quot;Type&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Type&quot;</span><span class="p">)</span>
+<span class="n">treeview</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s2">&quot;Info&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Additional Info&quot;</span><span class="p">)</span>
+<span class="n">treeview</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">display_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">second_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Display Data&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">display_data</span><span class="p">)</span>
+<span class="n">display_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Aya Al Baba, Mohammad Ayman Charaf.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

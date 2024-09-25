@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>app_PyQt5 &mdash; PyQt5 School Management System 00.00.01 documentation</title>
+  <title>app_PyQt5 &mdash; School Management System 00.00.01 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -14,9 +14,9 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=d7bb8d4d"></script>
-        <script src="../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=ce80abac"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -31,7 +31,7 @@
           
           
           <a href="../index.html" class="icon icon-home">
-            PyQt5 School Management System
+            School Management System
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -52,7 +52,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">PyQt5 School Management System</a>
+          <a href="../index.html">School Management System</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -120,9 +120,7 @@
 <span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="main">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.main">[docs]</a>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Main function to start the School Management System application.</span>
 <span class="sd">    </span>
@@ -136,7 +134,6 @@
 <span class="sd">    :rtype: None</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span></div>
-
 <span class="n">app</span> <span class="o">=</span><span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
 <span class="n">window</span> <span class="o">=</span> <span class="n">QMainWindow</span><span class="p">()</span>
 <span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;School Management System&quot;</span><span class="p">)</span>
@@ -145,9 +142,7 @@
 <span class="n">tabs</span> <span class="o">=</span> <span class="n">QTabWidget</span><span class="p">()</span>
 <span class="n">window</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">tabs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="show_error_popup">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.show_error_popup">[docs]</a>
-<span class="k">def</span> <span class="nf">show_error_popup</span><span class="p">():</span>
+<div class="viewcode-block" id="show_error_popup"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.show_error_popup">[docs]</a><span class="k">def</span> <span class="nf">show_error_popup</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Displays an error message in a pop-up window.</span>
 
@@ -165,10 +160,7 @@
     <span class="c1"># Show the popup</span>
     <span class="n">error_message</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span></div>
 
-
-<div class="viewcode-block" id="addStudent">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.addStudent">[docs]</a>
-<span class="k">def</span> <span class="nf">addStudent</span><span class="p">():</span>
+<div class="viewcode-block" id="addStudent"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.addStudent">[docs]</a><span class="k">def</span> <span class="nf">addStudent</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adds a new student to the database.</span>
 
@@ -200,10 +192,7 @@
 
 
 
-
-<div class="viewcode-block" id="deleteStudent">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.deleteStudent">[docs]</a>
-<span class="k">def</span> <span class="nf">deleteStudent</span><span class="p">():</span>
+<div class="viewcode-block" id="deleteStudent"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.deleteStudent">[docs]</a><span class="k">def</span> <span class="nf">deleteStudent</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Deletes a student from the database.</span>
 
@@ -224,10 +213,7 @@
     <span class="n">default_populate_tables</span><span class="p">()</span></div>
 
 
-
-<div class="viewcode-block" id="editStudent">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.editStudent">[docs]</a>
-<span class="k">def</span> <span class="nf">editStudent</span><span class="p">():</span>
+<div class="viewcode-block" id="editStudent"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.editStudent">[docs]</a><span class="k">def</span> <span class="nf">editStudent</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Edit the student whose ID is retrieved from the input field</span>
 <span class="sd">    by replacing one or more of its attributes in the database with the corresponding values in the nonempty input field.</span>
@@ -260,10 +246,7 @@
     <span class="n">default_populate_tables</span><span class="p">()</span></div>
 
 
-
-<div class="viewcode-block" id="addInstructor">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.addInstructor">[docs]</a>
-<span class="k">def</span> <span class="nf">addInstructor</span><span class="p">():</span>
+<div class="viewcode-block" id="addInstructor"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.addInstructor">[docs]</a><span class="k">def</span> <span class="nf">addInstructor</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adds a new instructor to the database.</span>
 
@@ -296,10 +279,7 @@
 
 
 
-
-<div class="viewcode-block" id="deleteInstructor">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.deleteInstructor">[docs]</a>
-<span class="k">def</span> <span class="nf">deleteInstructor</span><span class="p">():</span>
+<div class="viewcode-block" id="deleteInstructor"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.deleteInstructor">[docs]</a><span class="k">def</span> <span class="nf">deleteInstructor</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Deletes a instructor from the database.</span>
 
@@ -320,12 +300,9 @@
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="n">default_populate_tables</span><span class="p">()</span></div>
 
-
     
 
-<div class="viewcode-block" id="editInstructor">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.editInstructor">[docs]</a>
-<span class="k">def</span> <span class="nf">editInstructor</span><span class="p">():</span>
+<div class="viewcode-block" id="editInstructor"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.editInstructor">[docs]</a><span class="k">def</span> <span class="nf">editInstructor</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Edit the instructor whose ID is retrieved from the input field</span>
 <span class="sd">    by replacing one or more of its attributes in the database with the corresponding values in the nonempty input field.</span>
@@ -358,10 +335,7 @@
     <span class="n">default_populate_tables</span><span class="p">()</span></div>
 
 
-
-<div class="viewcode-block" id="addCourse">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.addCourse">[docs]</a>
-<span class="k">def</span> <span class="nf">addCourse</span><span class="p">():</span>
+<div class="viewcode-block" id="addCourse"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.addCourse">[docs]</a><span class="k">def</span> <span class="nf">addCourse</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Adds a new course to the database.</span>
 
@@ -393,10 +367,7 @@
 
 
 
-
-<div class="viewcode-block" id="deleteCourse">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.deleteCourse">[docs]</a>
-<span class="k">def</span> <span class="nf">deleteCourse</span><span class="p">():</span>
+<div class="viewcode-block" id="deleteCourse"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.deleteCourse">[docs]</a><span class="k">def</span> <span class="nf">deleteCourse</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Deletes a course from the database.</span>
 
@@ -418,10 +389,7 @@
     <span class="n">default_populate_tables</span><span class="p">()</span></div>
 
 
-
-<div class="viewcode-block" id="editCourse">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.editCourse">[docs]</a>
-<span class="k">def</span> <span class="nf">editCourse</span><span class="p">():</span>
+<div class="viewcode-block" id="editCourse"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.editCourse">[docs]</a><span class="k">def</span> <span class="nf">editCourse</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Edit the course whose ID is retrieved from the input field</span>
 <span class="sd">    by replacing one or more of its attributes in the database with the corresponding values in the nonempty input field.</span>
@@ -450,10 +418,7 @@
     <span class="n">default_populate_tables</span><span class="p">()</span></div>
 
 
-
-<div class="viewcode-block" id="registerStudent">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.registerStudent">[docs]</a>
-<span class="k">def</span> <span class="nf">registerStudent</span><span class="p">():</span>
+<div class="viewcode-block" id="registerStudent"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.registerStudent">[docs]</a><span class="k">def</span> <span class="nf">registerStudent</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Obtains a studentID and a courseID from input fields and inserts a record in the Registrations table,</span>
 <span class="sd">    indicating that this student has registered in this course</span>
@@ -471,11 +436,8 @@
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">show_error_popup</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
-
         
-<div class="viewcode-block" id="dropStudent">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.dropStudent">[docs]</a>
-<span class="k">def</span> <span class="nf">dropStudent</span><span class="p">():</span>
+<div class="viewcode-block" id="dropStudent"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.dropStudent">[docs]</a><span class="k">def</span> <span class="nf">dropStudent</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Obtains a studentID and a courseID from input fields and deletes the row in Registrations table which corresponds to both values.</span>
 <span class="sd">    shows an error popup in case of errors</span>
@@ -493,10 +455,7 @@
         <span class="n">show_error_popup</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
 
-
-<div class="viewcode-block" id="assignInstructor">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.assignInstructor">[docs]</a>
-<span class="k">def</span> <span class="nf">assignInstructor</span><span class="p">():</span>
+<div class="viewcode-block" id="assignInstructor"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.assignInstructor">[docs]</a><span class="k">def</span> <span class="nf">assignInstructor</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Obtains a course ID and InstructorID from input fields, and sets the value of the instructorID for this course to the</span>
 <span class="sd">    obtained instructor id.</span>
@@ -514,10 +473,7 @@
         <span class="n">show_error_popup</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
 
-
-<div class="viewcode-block" id="changeInstructor">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.changeInstructor">[docs]</a>
-<span class="k">def</span> <span class="nf">changeInstructor</span><span class="p">():</span>
+<div class="viewcode-block" id="changeInstructor"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.changeInstructor">[docs]</a><span class="k">def</span> <span class="nf">changeInstructor</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Obtains a course ID and InstructorID from input fields, and sets the value of the instructorID for this course to the</span>
 <span class="sd">    obtained instructor id.</span>
@@ -534,7 +490,6 @@
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="n">show_error_popup</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
-
 
 
 <span class="c1"># Create tabs</span>
@@ -664,9 +619,7 @@
 
 <span class="c1">#### View tables tab</span>
 
-<div class="viewcode-block" id="default_populate_tables">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.default_populate_tables">[docs]</a>
-<span class="k">def</span> <span class="nf">default_populate_tables</span><span class="p">():</span>
+<div class="viewcode-block" id="default_populate_tables"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.default_populate_tables">[docs]</a><span class="k">def</span> <span class="nf">default_populate_tables</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    populates the tables in the View Tables tab with all available entries (no filters)</span>
 
@@ -678,10 +631,7 @@
     <span class="n">populate_table</span><span class="p">(</span><span class="n">course_table</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select * from Courses&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
     <span class="n">populate_table</span><span class="p">(</span><span class="n">instructor_table</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select * from Instructors&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span></div>
 
-
-<div class="viewcode-block" id="populate_table">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.populate_table">[docs]</a>
-<span class="k">def</span> <span class="nf">populate_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="populate_table"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.populate_table">[docs]</a><span class="k">def</span> <span class="nf">populate_table</span><span class="p">(</span><span class="n">table</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    populates the given table in the View Tables tab with the given data, after clearing it from existing data</span>
 
@@ -707,12 +657,9 @@
             <span class="k">pass</span>
         <span class="n">i</span><span class="o">+=</span><span class="mi">1</span></div>
 
-
 <span class="c1">#### Filter</span>
 
-<div class="viewcode-block" id="filter_results">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.filter_results">[docs]</a>
-<span class="k">def</span> <span class="nf">filter_results</span><span class="p">():</span>
+<div class="viewcode-block" id="filter_results"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.filter_results">[docs]</a><span class="k">def</span> <span class="nf">filter_results</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Obtains filter values from the input fields, and obtains data from the database according to these filters.</span>
 <span class="sd">    Clears the tables, then populates them with the filtered results</span>
@@ -740,7 +687,6 @@
     <span class="n">populate_table</span><span class="p">(</span><span class="n">student_table</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">student_query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span> <span class="p">)</span>
     <span class="n">populate_table</span><span class="p">(</span><span class="n">instructor_table</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">instructor_query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
     <span class="n">populate_table</span><span class="p">(</span><span class="n">course_table</span><span class="p">,</span> <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">course_query</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span> <span class="p">)</span></div>
-
 
 <span class="n">main_layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
 
@@ -780,9 +726,7 @@
 
 <span class="c1">#### Export/Import data tab</span>
 
-<div class="viewcode-block" id="exportStudents">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportStudents">[docs]</a>
-<span class="k">def</span> <span class="nf">exportStudents</span><span class="p">():</span>
+<div class="viewcode-block" id="exportStudents"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportStudents">[docs]</a><span class="k">def</span> <span class="nf">exportStudents</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    exports all database entries in the students table into a json file named students.json.</span>
 <span class="sd">    Creates this file if it doesn&#39;t exist</span>
@@ -799,10 +743,7 @@
         <span class="n">student</span> <span class="o">=</span> <span class="n">Student</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">student</span><span class="o">.</span><span class="n">save_to_json</span><span class="p">()</span></div>
 
-
-<div class="viewcode-block" id="exportInstructors">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportInstructors">[docs]</a>
-<span class="k">def</span> <span class="nf">exportInstructors</span><span class="p">():</span>
+<div class="viewcode-block" id="exportInstructors"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportInstructors">[docs]</a><span class="k">def</span> <span class="nf">exportInstructors</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    exports all database entries in the instructors table into a json file named instructors.json.</span>
 <span class="sd">    Creates this file if it doesn&#39;t exist</span>
@@ -819,10 +760,7 @@
         <span class="n">instructor</span> <span class="o">=</span> <span class="n">Instructor</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">instructor</span><span class="o">.</span><span class="n">save_to_json</span><span class="p">()</span></div>
 
-
-<div class="viewcode-block" id="exportCourses">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportCourses">[docs]</a>
-<span class="k">def</span> <span class="nf">exportCourses</span><span class="p">():</span>
+<div class="viewcode-block" id="exportCourses"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportCourses">[docs]</a><span class="k">def</span> <span class="nf">exportCourses</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    exports all database entries in the courses table into a json file named courses.json.</span>
 <span class="sd">    Creates this file if it doesn&#39;t exist</span>
@@ -840,10 +778,7 @@
         <span class="n">course</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">course</span><span class="o">.</span><span class="n">save_to_json</span><span class="p">()</span></div>
 
-
-<div class="viewcode-block" id="exportRegistrations">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportRegistrations">[docs]</a>
-<span class="k">def</span> <span class="nf">exportRegistrations</span><span class="p">():</span>
+<div class="viewcode-block" id="exportRegistrations"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.exportRegistrations">[docs]</a><span class="k">def</span> <span class="nf">exportRegistrations</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    exports all database entries in the regsitrations table into a json file named regsitrations.json.</span>
 <span class="sd">    Creates this file if it doesn&#39;t exist</span>
@@ -866,10 +801,7 @@
             <span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">record</span><span class="p">])</span>
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span></div>
 
-
-<div class="viewcode-block" id="file_not_found_popup">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.file_not_found_popup">[docs]</a>
-<span class="k">def</span> <span class="nf">file_not_found_popup</span><span class="p">():</span>
+<div class="viewcode-block" id="file_not_found_popup"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.file_not_found_popup">[docs]</a><span class="k">def</span> <span class="nf">file_not_found_popup</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Displays an error message in a pop-up window, stating that the file was not found</span>
 
@@ -886,10 +818,7 @@
     <span class="c1"># Show the popup</span>
     <span class="n">error_message</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span></div>
 
-
-<div class="viewcode-block" id="loadStudents">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadStudents">[docs]</a>
-<span class="k">def</span> <span class="nf">loadStudents</span><span class="p">():</span>
+<div class="viewcode-block" id="loadStudents"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadStudents">[docs]</a><span class="k">def</span> <span class="nf">loadStudents</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    inserts all entries in the students.json file into the Students table in the database</span>
 <span class="sd">    displays a file not found error in case this file doesn&#39;t exist</span>
@@ -910,11 +839,8 @@
                     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">file_not_found_popup</span><span class="p">()</span></div>
-
         
-<div class="viewcode-block" id="loadInstructors">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadInstructors">[docs]</a>
-<span class="k">def</span> <span class="nf">loadInstructors</span><span class="p">():</span>
+<div class="viewcode-block" id="loadInstructors"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadInstructors">[docs]</a><span class="k">def</span> <span class="nf">loadInstructors</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    inserts all entries in the instructors.json file into the Instructors table in the database</span>
 <span class="sd">    displays a file not found error in case this file doesn&#39;t exist</span>
@@ -935,12 +861,9 @@
                     <span class="k">pass</span>   
     <span class="k">except</span><span class="p">:</span>
         <span class="n">file_not_found_popup</span><span class="p">()</span></div>
-
         
 
-<div class="viewcode-block" id="loadCourses">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadCourses">[docs]</a>
-<span class="k">def</span> <span class="nf">loadCourses</span><span class="p">():</span>
+<div class="viewcode-block" id="loadCourses"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadCourses">[docs]</a><span class="k">def</span> <span class="nf">loadCourses</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    inserts all entries in the courses.json file into the Courses table in the database</span>
 <span class="sd">    displays a file not found error in case this file doesn&#39;t exist</span>
@@ -961,12 +884,9 @@
                     <span class="k">pass</span>  
     <span class="k">except</span><span class="p">:</span>
         <span class="n">file_not_found_popup</span><span class="p">()</span></div>
-
             
 
-<div class="viewcode-block" id="loadRegistrations">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadRegistrations">[docs]</a>
-<span class="k">def</span> <span class="nf">loadRegistrations</span><span class="p">():</span>
+<div class="viewcode-block" id="loadRegistrations"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.loadRegistrations">[docs]</a><span class="k">def</span> <span class="nf">loadRegistrations</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    inserts all entries in the registrations.json file into the Registrations table in the database</span>
 <span class="sd">    displays a file not found error in case this file doesn&#39;t exist</span>
@@ -987,12 +907,9 @@
                     <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="n">file_not_found_popup</span><span class="p">()</span></div>
-
         
 
-<div class="viewcode-block" id="generate_csv">
-<a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.generate_csv">[docs]</a>
-<span class="k">def</span> <span class="nf">generate_csv</span><span class="p">():</span>
+<div class="viewcode-block" id="generate_csv"><a class="viewcode-back" href="../app_PyQt5.html#app_PyQt5.generate_csv">[docs]</a><span class="k">def</span> <span class="nf">generate_csv</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    generates a csv file containing all records in the tables in the database</span>
 <span class="sd">    by exporting them to json first, then using these json files to populate the csv file.</span>
@@ -1049,7 +966,6 @@
 
 
 
-
 <span class="n">export_import_layout</span> <span class="o">=</span> <span class="n">QFormLayout</span><span class="p">()</span>
 <span class="n">export_students</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s1">&#39;Export Students to JSON&#39;</span><span class="p">)</span>
 <span class="n">export_students</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">exportStudents</span><span class="p">)</span>
@@ -1098,7 +1014,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, Aya Al Baba.</p>
+    <p>&#169; Copyright 2024, Aya Al Baba, Mohammad Ayman Charaf.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

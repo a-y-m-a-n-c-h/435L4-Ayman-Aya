@@ -10,13 +10,13 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..\..'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'PyQt5 School Management System'
-copyright = '2024, Aya Al Baba'
+project = 'School Management System'
+copyright = '2024, Aya Al Baba, Mohammad Ayman Charaf'
 author = 'Aya Al Baba'
 release = '00.00.01'
 
