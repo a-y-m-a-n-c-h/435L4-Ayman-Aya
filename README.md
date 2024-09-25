@@ -1,10 +1,10 @@
 # 435L4-Ayman-Aya
-A project combining Tkinter and PyQt documented implementations
-first, run the following command to create a virtual environment
-`python -m venv venv`
-Then, install the requirements:
-`pip install -r requirements.txt`
-Then run the app_PyQt5.py for the PyQt app, or main.py for the Tkinter app.
+A project combining Tkinter and PyQt documented implementations. Aya Al Baba worked on the PyQt5 documentation, and Mohammad Ayman Charaf worked on the Tkinter documentation \
+first, run the following command to create a virtual environment \
+`python -m venv venv` \
+Then, install the requirements: \
+`pip install -r requirements.txt` \
+Then run the app_PyQt5.py for the PyQt app, or main.py for the Tkinter app. \
 # PyQt5 App Guide
 
 The app consists or several tabs:
