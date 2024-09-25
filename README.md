@@ -5,7 +5,7 @@ first, run the following command to create a virtual environment \
 Then, install the requirements: \
 `pip install -r requirements.txt` \
 Then run the app_PyQt5.py for the PyQt app, or main.py for the Tkinter app. \
-# PyQt5 App Guide
+# PyQt5 and Tkinter App Guide
 
 The app consists or several tabs:
 ## Students Tab
